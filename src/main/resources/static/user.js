@@ -24,14 +24,14 @@ let userNavbar = '';
 const detailsUser = (user) => {
     const containerNavbar = document.getElementById("navbarUser");
     userNavbar += `
-         <span class="navbar-brand mb-0 h1" style="color:white; margin-right: 20px">${user.username}</span> 
+         <span class="navbar-brand mb-0 h1" style="color:white; margin-right: 20px">${user.username}</span>
          <span class="navbar-brand mb-0 h1" style="color:white">${user.roles.map(role => role.name)}</span>
          <a href="/logout">
          <button type="button" class="btn btn-primary mr float-right" style="margin-left: 800px">
          Logout
          </button>
-         </a>                                    
-                                    
+         </a>
+
     `
     containerNavbar.innerHTML = userNavbar
 }

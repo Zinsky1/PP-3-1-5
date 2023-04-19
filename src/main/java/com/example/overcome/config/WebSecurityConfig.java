@@ -2,7 +2,6 @@ package com.example.overcome.config;
 
 
 import com.example.overcome.service.UserDetailsService;
-import com.example.overcome.service.UserServiceImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -37,10 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().loginPage("/login")
                 .successHandler(successUserHandler).permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
                 .permitAll();
 
     }

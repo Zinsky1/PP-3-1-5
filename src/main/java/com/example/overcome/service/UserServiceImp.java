@@ -2,11 +2,8 @@ package com.example.overcome.service;
 
 import com.example.overcome.repository.UserRepository;
 import com.example.overcome.model.User;
-import org.hibernate.Session;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 @Service
@@ -14,8 +11,7 @@ public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @PersistenceContext
-    private Session session;
+
 
     public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -46,8 +42,7 @@ public class UserServiceImp implements UserService {
     @Transactional
     public void updateUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        session.update(user);
-        //userRepository.save(user);
+        userRepository.save(user);
 
     }
 
